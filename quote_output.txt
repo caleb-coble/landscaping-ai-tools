@@ -1,0 +1,45 @@
+# Landscaping Service Quote
+
+---
+
+**Prepared For:**
+Sarah Johnson
+456 Maple Ave, Raleigh, NC
+
+**Date:** June 17, 2025
+**Quote Valid For:** 30 Days
+
+---
+
+## Service Details
+
+| Service | Description | Price |
+|---|---|---|
+| Lawn Mowing | Small yard mowing, edging & cleanup | $45.00 |
+
+**Estimated Total: $45.00**
+
+---
+
+## Service Notes
+
+✅ **Prior Notification:** We will text you before arriving as requested
+✅ Includes edging along walkways and driveway
+✅ Includes grass clipping cleanup
+⏱️ **Estimated Service Time:** Approximately 30–45 minutes
+
+---
+
+## Additional Information
+
+- Pricing may vary slightly based on grass height and yard condition at time of service
+- Additional services such as weeding or fertilization are available upon request
+- Recurring service discounts available *(weekly or bi-weekly scheduling)*
+
+---
+
+**To accept this quote or schedule service, please contact us at:**
+📞 [Phone Number]
+📧 [Email Address]
+
+*Thank you for choosing our landscaping services, Sarah! We look forward to working with you.*

@@ -1,0 +1,14 @@
+Employee: Mike Johnson
+Date: 04/24/2026
+
+Job 1:
+Site: oak st house
+Truck: T4
+Hours: 6
+
+Job 2:
+Site: the smith place on pine rd
+Truck: T4
+Hours: 2
+
+Total Hours: 8

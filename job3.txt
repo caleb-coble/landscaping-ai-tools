@@ -1,0 +1,5 @@
+Customer: Lisa Thompson
+Address: 321 Elm Street, Durham NC
+Service Requested: Full yard cleanup and hedge trimming
+Yard Size: Large
+Notes: First time customer, please introduce yourself
