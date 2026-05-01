@@ -16,6 +16,7 @@ def convert_image(image_path):
         img = Image.open(image_path)
         new_path = image_path.replace(".heic", ".jpg").replace(".HEIC", ".jpg")
         img.save(new_path, "JPEG")
+        os.remove(image_path)
         return new_path
     return image_path
 
@@ -105,6 +106,8 @@ def update_spreadsheet(claude_response):
     workbook.save("timesheets_final.xlsx")
     print("Spreadsheet updated!")
 
-image_file = "IMG_4869.heic"
-result = process_timesheet(image_file)
-update_spreadsheet(result)
+# Commenting out so it doesn't affect file watcher
+
+# image_file = "IMG_4869.heic"
+# result = process_timesheet(image_file)
+# update_spreadsheet(result)
