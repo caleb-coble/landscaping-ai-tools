@@ -9,7 +9,9 @@ from pillow_heif import register_heif_opener
 
 register_heif_opener()
 
-client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+import streamlit as st
+api_key = os.environ.get("ANTHROPIC_API_KEY") or st.secrets.get("ANTHROPIC_API_KEY")
+client = anthropic.Anthropic(api_key=api_key)
 
 with open("job_list.txt", "r") as job_list_file:
     job_list_contents = job_list_file.read()
