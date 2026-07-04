@@ -1,6 +1,7 @@
 anthropic
-openpyxl
+streamlit
 Pillow
 pillow-heif
-watchdog
-streamlit
+pandas
+openpyxl
+supabase

@@ -1,35 +1,67 @@
-Spreadsheet Processor Plan:
+# Landscaping Timesheet Processor
 
-Description of program:
+Streamlit app for a landscaping business. Upload handwritten timesheet photos, extract data with Claude, and store records in Supabase.
 
-we are creating a system that allows a secretary to upload an image of a handwritten timesheet, and using claude api the code extracts the information from the image and formats it into usable data, and then claude (maybe not i cant remember if the code does this on its own or if claude does this part) uses the data to update the spreadsheet and then saves the spreadsheet.
+## Features
 
-this is going to replace the secretary having to take time out of her day to read each line of the timesheet line by line and type it into the spreadsheet one cell at a time, and this is going to save her a lot of time..
+- **Upload Timesheet** — Process JPG/HEIC images via Claude vision API
+- **UNMATCHED job handling** — Resolve unclear job names before saving
+- **View & Edit Data** — Browse and edit records, export to Excel
+- **Manage Jobs** — Add, search, edit, and delete official job names
 
-I haven't mentioned this part to you yet but i would like for us to create a new folder for timesheet uploads where the code can automatically detect a file upload and instantly initiate the process. 
+## Setup
 
-plan:
+### 1. Supabase
 
-First (we already did this) we need to import our libraries
+Create a Supabase project and run this SQL in the SQL Editor:
 
-next I will need to create a new folder (with your instruction on naming conventions etc..)
+```sql
+create table jobs (
+  id bigint generated always as identity primary key,
+  job_name text not null unique
+);
 
-next create the code that detects when a file (image file) is uploaded
+create table timesheets (
+  id bigint generated always as identity primary key,
+  employee text not null,
+  timesheet_date text not null,
+  job_site text not null,
+  truck integer not null,
+  hours numeric not null,
+  date_submitted text not null
+);
+```
 
-(if possible) make sure that the code stops and sends an error response if the uploaded file isn't an image so that it doesn't mess anything up because it must've been an accident.
+On first run, the app seeds the `jobs` table from `job_list.txt` if it is empty.
 
-next the code needs to determine if the image file is an heic or a jpg file.
+### 2. Secrets
 
-next we need to convert our heic image file to jpg if it was an heic
+Create `.streamlit/secrets.toml` (do not commit this file):
 
-we need to make sure the image is formatted so that claude can read it
+```toml
+ANTHROPIC_API_KEY = "your-key"
+SUPABASE_URL = "https://your-project.supabase.co"
+SUPABASE_KEY = "your-service-role-key"
+```
 
-then we need to send it to claude (this is a multistep process)
+For Streamlit Cloud, paste the same values in **Settings → Secrets**.
 
-we first need to make sure that claude has access to our official job list so he can cross reference what the employee wrote and the official job name, just so our records can be very clear
-then we need to let claude use the official name to replace what they wrote, and then format the data in a usable way.
-then we need to use the data to update the spreadsheet 
+### 3. Install and run locally
 
-and then we need to save it.
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-then print a message that says spreadsheet updated.
+## Project structure
+
+| File | Purpose |
+|------|---------|
+| `app.py` | Streamlit UI (3 tabs) |
+| `final_processor.py` | Image processing, Claude API, parsing |
+| `database.py` | Supabase connection and CRUD |
+| `job_list.txt` | One-time seed data for official jobs |
+
+## Deployment
+
+Deploy to [Streamlit Community Cloud](https://share.streamlit.io) from GitHub. Use Supabase for persistent storage — local Excel/files do not persist on Cloud.
